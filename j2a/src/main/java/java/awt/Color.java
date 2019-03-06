@@ -71,6 +71,15 @@ public final class Color {
         this.color = color;
     }
 
+    public Color(int red, int green, int blue, int alpha) {
+        int color = alpha << 24;
+        color = color | (red << 16);
+        color = color | (green << 8);
+        color = color | blue;
+
+        this.color = color;
+    }
+
     public Color(int color) {
         this.color = color;
     }

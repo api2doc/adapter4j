@@ -6,7 +6,7 @@ import android.graphics.Typeface;
 import java.awt.Color;
 import java.awt.Font;
 
-public class Env {
+public class Env2a {
 
     private static android.app.Application APP;
 

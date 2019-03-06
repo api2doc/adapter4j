@@ -7,7 +7,7 @@ import android.graphics.Typeface;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 
-import uia.j2a.Env;
+import uia.j2a.Env2a;
 
 public class Graphics2D extends Graphics {
 
@@ -27,7 +27,7 @@ public class Graphics2D extends Graphics {
         this.image = image;
         this.canvas = new Canvas(this.image.bitmapAndroid());
 
-        this.paint = Env.createPaint();
+        this.paint = Env2a.createPaint();
         this.paint.setStyle(Paint.Style.STROKE);
         this.paint.setColor(Color.white.getRGB());
         this.paint.setTextSize(14);
