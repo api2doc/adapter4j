@@ -4,8 +4,12 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 
+import java.awt.font.TextAttribute;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
+import java.text.AttributedCharacterIterator;
+import java.text.CharacterIterator;
+import java.util.Set;
 
 import uia.j2a.Env2a;
 
@@ -72,6 +76,29 @@ public class Graphics2D extends Graphics {
 
     public void drawOval(int x, int y, int width, int height) {
         this.canvas.drawOval(x, y, x + width, y + height, this.paint);
+    }
+
+    @Override
+    public void drawString(AttributedCharacterIterator iterator, int x, int y) {
+        String str = "";
+        for(char c = iterator.first(); c != CharacterIterator.DONE; c = iterator.next()) {
+            str += c;
+        }
+
+        Set<AttributedCharacterIterator.Attribute> as = iterator.getAllAttributeKeys();
+        if(as.contains(TextAttribute.STRIKETHROUGH)) {
+            this.paint.setStrikeThruText(true);
+        }
+        if(as.contains(TextAttribute.UNDERLINE)) {
+            this.paint.setUnderlineText(true);
+        }
+        this.paint.setStyle(Paint.Style.FILL);
+
+        this.canvas.drawText(str, x, y, paint);
+
+        this.paint.setStyle(Paint.Style.STROKE);
+        this.paint.setStrikeThruText(false);
+        this.paint.setUnderlineText(false);
     }
 
     @Override

@@ -10,7 +10,7 @@ public class Env2a {
 
     private static android.app.Application APP;
 
-    private static boolean PAINT_ANTI_ALIAS_FLAG = false;
+    private static boolean PAINT_ANTI_ALIAS_FLAG = true;
 
     public static void link(android.app.Application app) {
         APP = app;

@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
 import java.awt.image.BufferedImage;
+import java.awt.image.RenderedImage;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -36,13 +37,14 @@ public class ImageIO {
         }
     }
 
-    public static boolean write(BufferedImage image, String formatName, File file) throws IOException {
+    public static boolean write(RenderedImage image, String formatName, File file) throws IllegalArgumentException, IOException {
         try {
+            BufferedImage bimage = (BufferedImage)image;
             FileOutputStream out = new FileOutputStream(file);
             if ("png".equalsIgnoreCase(formatName)) {
-                image.bitmapAndroid().compress(Bitmap.CompressFormat.PNG, 90, out);
+                bimage.bitmapAndroid().compress(Bitmap.CompressFormat.PNG, 90, out);
             } else {
-                image.bitmapAndroid().compress(Bitmap.CompressFormat.JPEG, 90, out);
+                bimage.bitmapAndroid().compress(Bitmap.CompressFormat.JPEG, 90, out);
             }
             out.flush();
             out.close();
@@ -56,12 +58,13 @@ public class ImageIO {
         }
     }
 
-    public static boolean write(BufferedImage image, String formatName, OutputStream out) throws IOException {
+    public static boolean write(RenderedImage image, String formatName, OutputStream out) throws IllegalArgumentException, IOException {
         try {
+            BufferedImage bimage = (BufferedImage)image;
             if ("png".equalsIgnoreCase(formatName)) {
-                image.bitmapAndroid().compress(Bitmap.CompressFormat.PNG, 90, out);
+                bimage.bitmapAndroid().compress(Bitmap.CompressFormat.PNG, 90, out);
             } else {
-                image.bitmapAndroid().compress(Bitmap.CompressFormat.JPEG, 90, out);
+                bimage.bitmapAndroid().compress(Bitmap.CompressFormat.JPEG, 90, out);
             }
             out.flush();
             return true;

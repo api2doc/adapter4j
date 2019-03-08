@@ -6,7 +6,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 
-public class BufferedImage extends Image {
+public class BufferedImage extends Image implements RenderedImage {
 
     public final static int TYPE_3BYTE_BGR = 1;
 
