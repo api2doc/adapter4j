@@ -54,6 +54,18 @@ public final class Font {
         return this.size;
     }
 
+    public Font deriveFont(Font font, int style, float size) {
+        return new Font(Typeface.create(this.typeFace, style), (int)size);
+    }
+
+    public Font deriveFont(Font font, int style) {
+        return new Font(Typeface.create(this.typeFace, style), (int)this.size);
+    }
+
+    public Font deriveFont(Font font, float size) {
+        return new Font(this.typeFace, (int)size);
+    }
+
     public Typeface fontAndroid() {
         return this.typeFace;
     }
