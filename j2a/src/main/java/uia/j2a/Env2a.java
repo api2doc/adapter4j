@@ -25,6 +25,7 @@ public class Env2a {
     }
 
     public static Typeface createTypeface(Font font) {
-        return Typeface.create(font.getFamily(), font.getStyle());
+        font.getFamily();
+        return font.fontAndroid();
     }
 }

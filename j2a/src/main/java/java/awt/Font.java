@@ -12,9 +12,11 @@ public final class Font {
 
     public final static int ITALIC = 2;
 
-    private Typeface typeFace;
+    private final String name;
 
-    private int size;
+    private final int size;
+
+    private Typeface typeFace;
 
     public Font(String name, int style, int size) {
         this.size = size;
@@ -23,15 +25,31 @@ public final class Font {
         } catch (Exception ex) {
             this.typeFace = Typeface.MONOSPACE;
         }
+        this.name = name;
     }
 
     public Font(Typeface typeFace, int size) {
         this.size = size;
         this.typeFace = typeFace == null ? Typeface.MONOSPACE : typeFace;
+        this.name = this.typeFace.toString();
+    }
+
+    public Font(Typeface typeFace, int size, String name) {
+        this.size = size;
+        this.typeFace = typeFace == null ? Typeface.MONOSPACE : typeFace;
+        this.name = name;
     }
 
     public String getFamily() {
-        return this.typeFace.toString();
+        return this.name;
+    }
+
+    public String getFontName() {
+        return this.name;
+    }
+
+    public String getName() {
+        return this.name;
     }
 
     public boolean isBold() {
@@ -54,15 +72,15 @@ public final class Font {
         return this.size;
     }
 
-    public Font deriveFont(Font font, int style, float size) {
+    public Font deriveFont(int style, float size) {
         return new Font(Typeface.create(this.typeFace, style), (int)size);
     }
 
-    public Font deriveFont(Font font, int style) {
+    public Font deriveFont(int style) {
         return new Font(Typeface.create(this.typeFace, style), (int)this.size);
     }
 
-    public Font deriveFont(Font font, float size) {
+    public Font deriveFont(float size) {
         return new Font(this.typeFace, (int)size);
     }
 

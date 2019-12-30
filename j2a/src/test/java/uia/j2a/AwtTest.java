@@ -4,6 +4,7 @@ import android.graphics.Typeface;
 
 import org.junit.Test;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
@@ -32,9 +33,14 @@ public class AwtTest {
     }
 
     @Test
+    public void testBasicStroke() {
+        BasicStroke stroke = new BasicStroke(3.0f);
+    }
+
+    @Test
     public void testFont() {
         Font font = new Font("Arial", Font.PLAIN, 16);
-        Typeface arial = Env.createTypeface(font);
+        Typeface arial = Env2a.createTypeface(font);
         System.out.println(arial);
 
         assertEquals("Arial", font.getFamily());
